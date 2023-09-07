@@ -44,3 +44,6 @@ git clone https://github.com/Arksine/Katapult
 pip3 install pyserial
 
 echoYellow "KIAUH & Katapult Installation Complete"
+
+# Try starting up KIAUH before leaving
+./kiauh/kiauh.sh
