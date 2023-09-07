@@ -58,7 +58,7 @@ then
 
     echoYellow "Doing 'sudo apt-get update'"
     echoRed "This may take a few moments to complete"
-    sudoAptUpdateResult=`sudo apt-get update`
+    sudoAptUpdateResult=`sudo apt-get update -y`
     if echo "$sudoAptUpdateResult" | grep -q "$sudoAptUpdatePUBKEY"; then
       sudoAptUpdateSubString=${sudoAptUpdateResult#*$sudoAptUpdatePUBKEY}
       sudoAptUpdateSubStringArray=($sudoAptUpdateSubString)
@@ -69,12 +69,12 @@ then
 
       echoYellow "Repeating 'sudo apt-get update'"
       echoRed "This may take a few moments to complete"
-      sudo apt-get update
+      sudo apt-get update -y
     fi
 	
     echoYellow "Installing Bullseye backports"
     echoRed "This may take a few moments to complete"
-    sudo apt install udev -t bullseye-backports
+    sudo apt install udev -t bullseye-backports -y
 	
     #  Put in message for user to reboot	
     echo
