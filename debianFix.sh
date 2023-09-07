@@ -83,7 +83,6 @@ then
     echoYellow "###  sudo reboot  ###"	
     echoYellow "###               ###"	
     echoYellow "#####################"	
-
   fi
 else
   echoGreen "Debian Bug Not Present"
