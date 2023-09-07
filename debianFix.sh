@@ -20,21 +20,20 @@
 
 # Echo Colour Specifications
 echoGreen(){
-    echo -e "\e[32m${1}\e[0m"
+  echo -e "\e[32m${1}\e[0m"
 }
 echoRed(){
-    echo -e "\e[31m${1}\e[0m"
+  echo -e "\e[31m${1}\e[0m"
 }
 echoBlue(){
-    echo -e "\e[34m${1}\e[0m"
+  echo -e "\e[34m${1}\e[0m"
 }
 echoYellow(){
-    echo -e "\e[33m${1}\e[0m"
+  echo -e "\e[33m${1}\e[0m"
 }
 
 
 echoYellow "Debian Bug Check & Fix Script"
-
 
 echoYellow "Loading UDEV Policy"
 echoRed "This may take a few moments to complete"
@@ -62,15 +61,15 @@ then
     sudoAptUpdateResult=`sudo apt-get update`
     if echo "$sudoAptUpdateResult" | grep -q "$sudoAptUpdatePUBKEY"; then
       sudoAptUpdateSubString=${sudoAptUpdateResult#*$sudoAptUpdatePUBKEY}
-	    sudoAptUpdateSubStringArray=($sudoAptUpdateSubString)
-	    echoYellow "Adding ${sudoAptUpdateSubStringArray[0]} to keyserver"
-  	  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${sudoAptUpdateSubStringArray[0]}
-	    echoYellow "Adding ${sudoAptUpdateSubStringArray[2]} to keyserver"
-	    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${sudoAptUpdateSubStringArray[2]}
+      sudoAptUpdateSubStringArray=($sudoAptUpdateSubString)
+      echoYellow "Adding ${sudoAptUpdateSubStringArray[0]} to keyserver"
+      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${sudoAptUpdateSubStringArray[0]}
+      echoYellow "Adding ${sudoAptUpdateSubStringArray[2]} to keyserver"
+      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${sudoAptUpdateSubStringArray[2]}
 
       echoYellow "Repeating 'sudo apt-get update'"
       echoRed "This may take a few moments to complete"
-  	  sudo apt-get update
+      sudo apt-get update
     fi
 	
     echoYellow "Installing Bullseye backports"
@@ -89,4 +88,3 @@ then
 else
   echoGreen "Debian Bug Not Present"
 fi
-
